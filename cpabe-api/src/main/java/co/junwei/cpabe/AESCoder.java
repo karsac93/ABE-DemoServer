@@ -13,7 +13,12 @@ public class AESCoder {
 	
     static int keyLength = 16;
     
-
+    /**
+     * Modified this for use in Android device. This needs to modified in future. SHA1PRNG is not secure
+     * @param seed
+     * @return
+     * @throws Exception
+     */
 	private static byte[] getRawKey(byte[] seed) throws Exception {
 		byte[] raw = InsecureSHA1PRNGKeyDerivator.deriveInsecureKey(seed, keyLength);
 		return raw;

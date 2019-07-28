@@ -132,6 +132,14 @@ public class Cpabe {
 		}
 	}
 	
+	/**
+	 * Encrypt method modified to get input file and return byte cipher file
+	 * @param pub_byte
+	 * @param policy
+	 * @param inputfile
+	 * @return
+	 * @throws Exception
+	 */
 	public byte[] encModified(byte[] pub_byte, String policy, String inputfile) throws Exception {
 		BswabePub pub;
 		BswabeCph cph;
@@ -164,6 +172,15 @@ public class Cpabe {
 		return os.toByteArray();
 	}
 	
+	
+	/**
+	 * Decrypt method modified to return plaintext as bytes
+	 * @param pub_byte
+	 * @param prv_byte
+	 * @param enc_byte
+	 * @return
+	 * @throws Exception
+	 */
 	public byte[] decModified(byte[] pub_byte, byte[] prv_byte, byte[] enc_byte) throws Exception {
 		byte[] aesBuf, cphBuf;
 		byte[] plt = null;

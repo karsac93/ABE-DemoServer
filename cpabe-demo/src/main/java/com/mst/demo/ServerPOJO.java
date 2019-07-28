@@ -3,6 +3,13 @@ package com.mst.demo;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * This POJO class is shared between MKG (Master Key Generator) and Edge Server
+ * public, private, ownHash and otherHash for that edge server is transferred from
+ * MKG to edge server
+ * @author ks2ht
+ *
+ */
 public class ServerPOJO implements Serializable{
 	
 	private static final long serialVersionUID = 956035975591443929L;

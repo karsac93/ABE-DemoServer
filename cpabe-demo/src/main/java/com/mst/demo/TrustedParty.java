@@ -18,6 +18,11 @@ import co.junwei.bswabe.BswabePrv;
 import co.junwei.bswabe.BswabePub;
 import co.junwei.bswabe.SerializeUtils;
 
+/**
+ * This is the Master Key Generator class (MKG)
+ * @author ks2ht
+ *
+ */
 public class TrustedParty {
 	
 	private  int PORT;
@@ -34,9 +39,14 @@ public class TrustedParty {
 	}
 	
 	
-	//Initialize the public, private and master keys
+	/**
+	 * This generates Master, public and overall private keys
+	 * @param attr - All the attributes associated with all the edge servers
+	 * @param port - Port number in which MKG runs
+	 * @throws NoSuchAlgorithmException
+	 * @throws IOException
+	 */
 	public TrustedParty(String[] attr, int port) throws NoSuchAlgorithmException, IOException {
-		
 		this.PORT = port;
 		pub = new BswabePub();
 		msk = new BswabeMsk();
@@ -49,7 +59,15 @@ public class TrustedParty {
 		}
 	}
 	
-	//Start running the server
+	/**
+	 * Runs the MKG, waits for edge servers to connect
+	 * receives the attributes of edge server and generated public key for it
+	 * transfers key chains and all the keys
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 * @throws NoSuchAlgorithmException
+	 * @throws IllegalArgumentException
+	 */
 	public void runServer() throws IOException, ClassNotFoundException, NoSuchAlgorithmException, IllegalArgumentException {
 		
 		Socket socket = serverSocket.accept();
@@ -82,6 +100,11 @@ public class TrustedParty {
 		runServer();
 	}
 	
+	/**
+	 * 
+	 * @param input
+	 * @return
+	 */
 	private String shaHash(String input) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -99,6 +122,10 @@ public class TrustedParty {
 		return null;
 	}
 
+	/**
+	 * Generates a random string from which key chains are generated
+	 * @return
+	 */
 	private String generateKey() {
 		String CHAR_LIST = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		int RANDOM_STRING_LENGTH = bitLenght / 8;
@@ -115,6 +142,10 @@ public class TrustedParty {
 		return randStr.toString();
 	}
 	
+	/**
+	 * Generates keychains
+	 * @return
+	 */
 	public List<HashObject> generateKeyChain() {
 		List<HashObject> hashes = new ArrayList<HashObject>();
 		HashObject hash = null;
@@ -132,6 +163,10 @@ public class TrustedParty {
 		return hashes;
 	}
 	
+	/**
+	 * Just for testing
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		TrustedParty ttp = new TrustedParty();
 		String in = "5303657f7e80ad65bfaa11feb0749a244d29cda5f0d239ef595ea44971008c33";

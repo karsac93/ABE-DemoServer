@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class HashObject  implements Serializable{
 	/**
-	 * 
+	 * A Pojo class for each keychain with K5 and k0
 	 */
 	private static final long serialVersionUID = -1739358668033838114L;
 	final String k5;

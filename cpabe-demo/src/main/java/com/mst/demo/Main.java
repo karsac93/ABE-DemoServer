@@ -4,6 +4,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Arrays;
 
+/**
+ * 
+ * @author ks2ht
+ *This is the Main class, running this starts MKG and Edge Servers
+ */
 public class Main {
 
 	private static final int TTPport = 5000;
@@ -12,19 +17,28 @@ public class Main {
 
 	public static final String AR_PREFIX = "AR_";
 	public static final String DS_PREFIX = "DS_";
-
+	
+	//Just for testing
 	private static final String INFILE = "C:\\Users\\home\\Desktop\\test.png";
 	private static final String DECFILE = "C:\\Users\\home\\Desktop\\dtest.png";
+	
+	//All the attributes used by edge servers (used for public/private keys)
+	final static String[] attr = { "army", "soldier", "disaster", "flooding" };
+	
+	//Attributes for Battlefield edge server
+	final static String[] ar_attr = { "army", "soldier" };
+	
+	//Attributes for Disaster edge server
+	final static String[] ds_attr = { "disaster", "flooding" };
 
 	public static void main(String[] args) throws Exception {
-		final String[] attr = { "army", "soldier", "disaster", "flooding" };
+		
 		System.out.println("Central Authority Master key Generator initialized and running");
 		System.out.println("Public and Master key is generated based on the keys:");
 		System.out.println(Arrays.toString(attr));
 		System.out.println("Master Key Generator runs on PORT:" + TTPport);
 		System.out.println("------------------------------------------");
 		Thread ttpThread = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				try {
@@ -37,9 +51,6 @@ public class Main {
 		});
 		ttpThread.start();
 		Thread.sleep(1000);
-
-		final String[] ar_attr = { "army", "soldier" };
-		final String[] ds_attr = { "disaster", "flooding" };
 
 		Thread arThread = new Thread(new Runnable() {
 			@Override

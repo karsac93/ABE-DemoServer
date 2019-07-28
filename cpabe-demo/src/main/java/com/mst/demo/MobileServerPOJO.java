@@ -3,6 +3,14 @@ package com.mst.demo;
 import java.io.Serializable;
 import java.util.List;
 
+
+/**
+ * This is a POJO class used by mobile devices and Edge servers
+ * public, private, deviceID, attrs, ownHash and otherHash are transferred from
+ * Edge servers to mobile devices
+ * @author ks2ht
+ *
+ */
 public class MobileServerPOJO implements Serializable{
 	
 	private static final long serialVersionUID = -4593526765417959655L;
